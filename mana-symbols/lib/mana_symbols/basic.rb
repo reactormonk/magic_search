@@ -17,7 +17,7 @@ class ManaSymbols::Basic
     end
 
     def color
-      nil
+      :none
     end
   end
 

@@ -7,7 +7,7 @@ end
 class ManaSymbols::Dual < ManaSymbols::Basic
   # Either 2 or the color
   def initialize(color)
-    @color = Array(color) + [nil]
+    @color = Array(color) + [:none]
   end
 end
 
@@ -22,4 +22,8 @@ ManaSymbols::Tap = Class.new do
   def cost
     0
   end
-end
+
+  def color
+    :tap
+  end
+end.new

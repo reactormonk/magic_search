@@ -30,7 +30,7 @@ class ManaSymbols::ManaCost
   end                    
 
   def tap?
-    @symbols.size == 1 and @symbols[0] == ManaSymbols::Tap
+    colors.include? :tap
   end
 
   def colors

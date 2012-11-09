@@ -11,7 +11,7 @@ describe ManaSymbols do
   end
   it "should parse double mana {2/R}" do
     target = ManaSymbols::parse("{2/R}")
-    target.colors.must_equal Set.new([nil, :red])
+    target.colors.must_equal Set.new([:none, :red])
   end
   it "should parse tap {T}" do
     target = ManaSymbols::parse("{T}")
