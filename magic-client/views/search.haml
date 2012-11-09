@@ -1,0 +1,114 @@
+!!!
+%html{ :lang => 'en' }
+  %head
+    %link{:href => "stylesheets/application.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "stylesheets/picky.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}/
+    = js 'jquery-1.5.0.min'
+    = js 'history.min'
+    = js 'picky.min'
+
+  %body
+    %hgroup
+      / Replace these headers with your code
+      %img{ :class => 'picky', :src => "images/picky.png"}/
+      %h1 Picky
+      %h2
+        Scaffold: A great start into your
+        %em fantastic
+        search engine!
+        ☛
+        %a{ :href => "http://florianhanke.com/picky" } Picky Homepage
+    .content
+      = Picky::Helper.cached_interface
+      %section
+        %h1 Examples:
+        %p
+          %a{:href => "", :onclick => "pickyClient.insert('alan');"} alan
+          finds Alan in the title, and Alans who wrote books. The title is ranked higher due to weighing.
+        %p
+          %a{:href => "", :onclick => "pickyClient.insert('title:women');"} title:women
+          finds "women*" just in titles.
+        %p
+          %a{:href => "", :onclick => "pickyClient.insert('pinchn~');"} pinchn~
+          finds the similar "pynchon".
+        %p
+          %a{:href => "", :onclick => "pickyClient.insert('title:lyterature~');"} title:lyterature~
+          finds similar titles.
+        %p
+          %a{:href => "", :onclick => "pickyClient.insert('sp');"} sp
+          finds "sp*" in multiple categories. Choose the one you're looking for.
+        %p
+          %a{:href => "", :onclick => "pickyClient.insert('soc* p');"} soc* p
+          means "find something that starts with soc, and another thing starting with p".
+      :javascript
+        $(window).load(function() {
+          pickyClient = new PickyClient({
+            // A full query displays the rendered results.
+            //
+            full: '/search/full',
+            // fullResults: 100, // Optional. Amount of ids to search for, default 20.
+
+            // A live query just updates the count.
+            //
+            live: '/search/live',
+            // liveResults: 0, // Optional. Amount of ids to search for, default 0.
+
+            // showResultsLimit: 100, // Optional. Default is 10.
+
+            // Wrap each li group (like author-title, or title-isbn etc.) of results
+            // in this element.
+            // Optional. Default is '<ol class="results"></ol>'.
+            //
+            // wrapResults: '<div class="hello"><ol class="world"></ol></div>',
+
+            // before: function(query, params) {  }, // Optional. Before Picky sends any data. Return modified query.
+            // success: function(data, query) {  }, // Optional. Just after Picky receives data. (Get a PickyData object)
+            // after: function(data, query) {  }, // Optional. After Picky has handled the data and updated the view.
+
+            // This is used to generate the correct query strings, localized. E.g. "subject:war".
+            // Optional. If you don't give these, the field identifier given in the Picky server is used.
+            //
+            qualifiers: {
+              en:{
+                subjects:  'subject'
+              }
+            },
+
+            // Use this to group the choices (those are used when Picky needs more feedback).
+            // If a category is missing, it is appended in a virtual group at the end.
+            // Optional. Default is [].
+            //
+            groups: [['name', 'type', 'subtype', 'supertype', 'edition', 'rules']],
+            // This is used for formatting inside the choice groups.
+            //
+            // Use %n$s, where n is the position of the category in the key.
+            // Optional. Default is {}.
+            //
+            choices: {
+              en:{
+                'name': 'name %1$s',
+                'edition': 'from edition %1$s',
+                'type': 'of type %1$s',
+                'subtype': 'of subtype %1$s',
+                'supertype': 'of supertype %1$s',
+                'rules': 'with ruletext containing %1$s',
+              }
+            },
+
+            // This is used to explain the preceding word in the suggestion text (if it
+            // has not yet been defined by the choices above), localized. E.g. "Peter (author)".
+            // Optional. Default are the field identifiers from the Picky server.
+            //
+            explanations: {
+              en:{
+              }
+            }
+          });
+
+          // An initial search text, prefilled
+          // this one is passed through the query param q.
+          //
+          // Example: www.mysearch.com/?q=example
+          //
+          pickyClient.insertFromURL('#{@query}');
+        });
