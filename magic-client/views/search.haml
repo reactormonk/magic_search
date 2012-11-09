@@ -9,36 +9,26 @@
 
   %body
     %hgroup
-      / Replace these headers with your code
-      %img{ :class => 'picky', :src => "images/picky.png"}/
-      %h1 Picky
-      %h2
-        Scaffold: A great start into your
-        %em fantastic
-        search engine!
-        ☛
-        %a{ :href => "http://florianhanke.com/picky" } Picky Homepage
+      %h1 Magic Search
+      %h2 An easy way to find Magic cards
     .content
       = Picky::Helper.cached_interface
       %section
         %h1 Examples:
         %p
-          %a{:href => "", :onclick => "pickyClient.insert('alan');"} alan
-          finds Alan in the title, and Alans who wrote books. The title is ranked higher due to weighing.
+          %a{:href => "", :onclick => "pickyClient.insert('demon');"} demon
+          Finds cards with subtype demon, name demon or rules containing demon. Rules are weighted lower.
         %p
-          %a{:href => "", :onclick => "pickyClient.insert('title:women');"} title:women
-          finds "women*" just in titles.
+          %a{:href => "", :onclick => "pickyClient.insert('name:life');"} name:life
+          Finds cards which contain 'life' in the name
         %p
-          %a{:href => "", :onclick => "pickyClient.insert('pinchn~');"} pinchn~
-          finds the similar "pynchon".
-        %p
-          %a{:href => "", :onclick => "pickyClient.insert('title:lyterature~');"} title:lyterature~
-          finds similar titles.
+          %a{:href => "", :onclick => "pickyClient.insert('bors~');"} bors~
+          finds the similar "boros".
         %p
           %a{:href => "", :onclick => "pickyClient.insert('sp');"} sp
           finds "sp*" in multiple categories. Choose the one you're looking for.
         %p
-          %a{:href => "", :onclick => "pickyClient.insert('soc* p');"} soc* p
+          %a{:href => "", :onclick => "pickyClient.insert('sac* p');"} sac* p
           means "find something that starts with soc, and another thing starting with p".
       :javascript
         $(window).load(function() {
@@ -78,7 +68,7 @@
             // If a category is missing, it is appended in a virtual group at the end.
             // Optional. Default is [].
             //
-            groups: [['name', 'type', 'subtype', 'supertype', 'edition', 'rules']],
+            groups: [['name', 'supertype', 'type', 'subtype', 'edition', 'rules', 'editions']],
             // This is used for formatting inside the choice groups.
             //
             // Use %n$s, where n is the position of the category in the key.

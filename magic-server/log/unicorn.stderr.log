@@ -1,0 +1,73 @@
+I, [2012-11-09T03:21:59.358252 #18940]  INFO -- : Refreshing Gem list
+I, [2012-11-09T03:22:00.598715 #18940]  INFO -- : listening on addr=0.0.0.0:8080 fd=49
+I, [2012-11-09T03:22:00.598892 #18940]  INFO -- : worker=0 spawning...
+I, [2012-11-09T03:22:00.601962 #18942]  INFO -- : worker=0 spawned pid=18942
+I, [2012-11-09T03:22:00.602931 #18940]  INFO -- : worker=1 spawning...
+I, [2012-11-09T03:22:00.605085 #18940]  INFO -- : worker=2 spawning...
+I, [2012-11-09T03:22:00.605254 #18942]  INFO -- : worker=0 ready
+I, [2012-11-09T03:22:00.605723 #18945]  INFO -- : worker=1 spawned pid=18945
+I, [2012-11-09T03:22:00.606932 #18948]  INFO -- : worker=2 spawned pid=18948
+I, [2012-11-09T03:22:00.607745 #18940]  INFO -- : master process ready
+I, [2012-11-09T03:22:00.608703 #18945]  INFO -- : worker=1 ready
+I, [2012-11-09T03:22:00.609856 #18948]  INFO -- : worker=2 ready
+129.114.19.254 - - [09/Nov/2012 03:22:14] "GET /cards?ids=20&offset=0&query=rules%3Alife+name%3Ademon HTTP/1.1" 200 140 0.3351
+129.114.19.254 - - [09/Nov/2012 03:22:18] "GET /cards?offset=0&query=file HTTP/1.1" 200 103 0.0021
+129.114.19.254 - - [09/Nov/2012 03:22:19] "GET /cards?offset=0&query=l HTTP/1.1" 200 222 0.0021
+129.114.19.254 - - [09/Nov/2012 03:22:20] "GET /cards?offset=0&query=life+d HTTP/1.1" 200 441 0.0021
+129.114.19.254 - - [09/Nov/2012 03:22:20] "GET /cards?offset=0&query=life+d HTTP/1.1" 200 441 0.0020
+129.114.19.254 - - [09/Nov/2012 03:22:21] "GET /cards?offset=0&query=life+de HTTP/1.1" 200 453 0.0020
+129.114.19.254 - - [09/Nov/2012 03:22:21] "GET /cards?offset=0&query=life+demon HTTP/1.1" 200 489 0.0021
+129.114.19.254 - - [09/Nov/2012 03:22:22] "GET /cards?offset=0&query=life+demon HTTP/1.1" 200 489 0.0020
+129.114.19.254 - - [09/Nov/2012 03:22:22] "GET /cards?ids=20&offset=0&query=life+demon HTTP/1.1" 200 489 0.0019
+129.114.19.254 - - [09/Nov/2012 03:22:24] "GET /cards?ids=20&offset=0&query=life+demon HTTP/1.1" 200 489 0.0022
+129.114.19.254 - - [09/Nov/2012 03:22:43] "GET /cards?ids=20&offset=0&query=life+demon HTTP/1.1" 200 489 0.3526
+129.114.19.254 - - [09/Nov/2012 03:22:45] "GET /cards?offset=0&query=life+demo HTTP/1.1" 200 477 0.3319
+129.114.19.254 - - [09/Nov/2012 03:22:45] "GET /cards?offset=0&query=life+demon HTTP/1.1" 200 489 0.0024
+I, [2012-11-09T03:23:39.825609 #18940]  INFO -- : SIGWINCH ignored because we're not daemonized
+129.114.19.254 - - [09/Nov/2012 03:24:32] "GET /cards?ids=20&offset=0&query=life HTTP/1.1" 200 149 0.0025
+70.113.86.124 - - [09/Nov/2012 03:25:39] "GET //cards?offset=0&query=life HTTP/1.1" 200 149 0.0025
+70.113.86.124 - - [09/Nov/2012 03:25:41] "GET /favicon.ico HTTP/1.1" 404 462 0.0017
+70.113.86.124 - - [09/Nov/2012 03:25:41] "GET /cards?offset=0&query=life HTTP/1.1" 200 149 0.0023
+70.113.86.124 - - [09/Nov/2012 03:25:43] "GET /favicon.ico HTTP/1.1" 404 462 0.0017
+70.113.86.124 - - [09/Nov/2012 03:25:52] "GET /cards?offset=0&query=name:life HTTP/1.1" 200 108 0.0020
+70.113.86.124 - - [09/Nov/2012 03:25:54] "GET /favicon.ico HTTP/1.1" 404 462 0.0017
+I, [2012-11-09T03:29:39.108294 #18940]  INFO -- : SIGWINCH ignored because we're not daemonized
+I, [2012-11-09T03:29:54.397042 #18940]  INFO -- : SIGWINCH ignored because we're not daemonized
+/home/02213/sh37476/.rvm/gems/ruby-1.9.3-p286/gems/unicorn-4.4.0/lib/unicorn/http_server.rb:192:in `pid=': Already running on PID:18940 (or pid=tmp/pids/unicorn.pid is stale) (ArgumentError)
+	from /home/02213/sh37476/.rvm/gems/ruby-1.9.3-p286/gems/unicorn-4.4.0/lib/unicorn/http_server.rb:136:in `start'
+	from /home/02213/sh37476/.rvm/gems/ruby-1.9.3-p286/gems/unicorn-4.4.0/bin/unicorn:121:in `<top (required)>'
+	from /home/02213/sh37476/.rvm/gems/ruby-1.9.3-p286/bin/unicorn:19:in `load'
+	from /home/02213/sh37476/.rvm/gems/ruby-1.9.3-p286/bin/unicorn:19:in `<main>'
+	from /home/02213/sh37476/.rvm/gems/ruby-1.9.3-p286/bin/ruby_noexec_wrapper:14:in `eval'
+	from /home/02213/sh37476/.rvm/gems/ruby-1.9.3-p286/bin/ruby_noexec_wrapper:14:in `<main>'
+I, [2012-11-09T03:31:52.829306 #18940]  INFO -- : reaped #<Process::Status: pid 18942 exit 0> worker=0
+I, [2012-11-09T03:31:52.829421 #18940]  INFO -- : reaped #<Process::Status: pid 18945 exit 0> worker=1
+I, [2012-11-09T03:31:52.829522 #18940]  INFO -- : reaped #<Process::Status: pid 18948 exit 0> worker=2
+I, [2012-11-09T03:31:52.829637 #18940]  INFO -- : master complete
+I, [2012-11-09T03:31:54.143892 #22603]  INFO -- : Refreshing Gem list
+I, [2012-11-09T03:31:57.100671 #22603]  INFO -- : listening on addr=0.0.0.0:8080 fd=7
+I, [2012-11-09T03:31:57.100814 #22603]  INFO -- : worker=0 spawning...
+I, [2012-11-09T03:31:57.106045 #22605]  INFO -- : worker=0 spawned pid=22605
+I, [2012-11-09T03:31:57.107130 #22603]  INFO -- : worker=1 spawning...
+I, [2012-11-09T03:31:57.111413 #22603]  INFO -- : worker=2 spawning...
+I, [2012-11-09T03:31:57.111652 #22605]  INFO -- : worker=0 ready
+I, [2012-11-09T03:31:57.112098 #22608]  INFO -- : worker=1 spawned pid=22608
+I, [2012-11-09T03:31:57.116205 #22611]  INFO -- : worker=2 spawned pid=22611
+I, [2012-11-09T03:31:57.116340 #22603]  INFO -- : master process ready
+I, [2012-11-09T03:31:57.116638 #22608]  INFO -- : worker=1 ready
+I, [2012-11-09T03:31:57.119500 #22611]  INFO -- : worker=2 ready
+70.113.86.124 - - [09/Nov/2012 03:32:00] "GET /cards?offset=0&query=name:life HTTP/1.1" 200 435 0.5284
+70.113.86.124 - - [09/Nov/2012 03:32:02] "GET /favicon.ico HTTP/1.1" 404 462 0.2579
+70.113.86.124 - - [09/Nov/2012 03:32:03] "GET /favicon.ico HTTP/1.1" 404 462 0.0022
+70.113.86.124 - - [09/Nov/2012 03:32:04] "GET /favicon.ico HTTP/1.1" 404 462 0.0020
+129.114.19.254 - - [09/Nov/2012 03:32:05] "GET /cards?ids=20&offset=0&query=life HTTP/1.1" 200 482 0.0026
+129.114.19.254 - - [09/Nov/2012 03:32:09] "GET /cards?offset=0&query=de HTTP/1.1" 200 591 0.5183
+129.114.19.254 - - [09/Nov/2012 03:32:09] "GET /cards?offset=0&query=demo HTTP/1.1" 200 577 0.0020
+129.114.19.254 - - [09/Nov/2012 03:32:10] "GET /cards?offset=0&query=demon+ HTTP/1.1" 200 584 0.0018
+129.114.19.254 - - [09/Nov/2012 03:32:11] "GET /cards?offset=0&query=demon+life HTTP/1.1" 200 628 0.0034
+129.114.19.254 - - [09/Nov/2012 03:32:12] "GET /cards?ids=20&offset=0&query=demon+life HTTP/1.1" 200 628 0.0031
+129.114.19.254 - - [09/Nov/2012 03:32:17] "GET /cards?ids=20&offset=0&query=subtype%3Ademon+rules%3Alife HTTP/1.1" 200 342 0.0024
+I, [2012-11-09T03:33:21.940251 #22603]  INFO -- : reaped #<Process::Status: pid 22605 exit 0> worker=0
+I, [2012-11-09T03:33:21.940386 #22603]  INFO -- : reaped #<Process::Status: pid 22608 exit 0> worker=1
+I, [2012-11-09T03:33:21.940465 #22603]  INFO -- : reaped #<Process::Status: pid 22611 exit 0> worker=2
+I, [2012-11-09T03:33:21.940606 #22603]  INFO -- : master complete
