@@ -29,11 +29,15 @@ class ManaSymbols::ManaCost
     colors.include? :green
   end                    
 
-  def colors
-    Set.new(@symbols.map(&:color)).compact
+  def tap?
+    @symbols.size == 1 and @symbols[0] == ManaSymbols::Tap
   end
 
-  # this one is for multicolor symbols or phyrexian mana
+  def colors
+    Set.new(@symbols.map(&:color).flatten)
+  end
+
+  # this one is for multi/phyrexian/dual
   def possible_colors
   end
 
