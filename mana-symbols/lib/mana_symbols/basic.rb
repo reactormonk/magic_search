@@ -21,6 +21,9 @@ class ManaSymbols::Basic
     end
   end
 
+  X = Gray.new(3).tap do |variable|
+    # add more logic to colorless mana here
+  end
   W = new(:white)
   U = new(:blue)
   B = new(:black)

@@ -9,7 +9,8 @@ module ManaSymbols
     'U' => Basic::U,
     'B' => Basic::B,
     'R' => Basic::R,
-    'G' => Basic::G
+    'G' => Basic::G,
+    'X' => Basic::X
   } 
   LOOKUP.default_proc = proc {|hash, key|
     # better than silent fail

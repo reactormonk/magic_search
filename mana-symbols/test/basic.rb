@@ -36,4 +36,12 @@ describe ManaSymbols do
       ManaSymbols::parse(string).cost.must_equal result
     end
   end
+
+  it "should consider {X} as 3 colorless mana" do
+    { "{W}{R}{X}" => 5,
+      "{W}{2}{X}" => 6
+    }.each do |(string, result)|
+      ManaSymbols::parse(string).cost.must_equal result
+    end
+  end
 end
