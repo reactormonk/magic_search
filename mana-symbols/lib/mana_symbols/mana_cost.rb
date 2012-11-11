@@ -37,7 +37,7 @@ class ManaSymbols::ManaCost
     Set.new(@symbols.map(&:color).flatten)
   end
 
-  # this one is for multi/phyrexian/dual
+  # this one is for hybrid/phyrexian/dual
   def possible_colors
   end
 

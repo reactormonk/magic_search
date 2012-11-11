@@ -26,16 +26,16 @@ module ManaSymbols
     "W/P" => Phyrexian.new(:white),
         
     # More combinations exist, but the order is defined.
-    "B/G" => Multi.new(:black, :green),
-    "B/R" => Multi.new(:black, :red),
-    "G/U" => Multi.new(:green, :blue),
-    "G/W" => Multi.new(:green, :white),
-    "R/G" => Multi.new(:red, :green),
-    "R/W" => Multi.new(:red, :white),
-    "U/B" => Multi.new(:blue, :black),
-    "U/R" => Multi.new(:blue, :red),
-    "W/B" => Multi.new(:white, :black),
-    "W/U" => Multi.new(:white, :blue)
+    "B/G" => Hybrid.new(:black, :green),
+    "B/R" => Hybrid.new(:black, :red),
+    "G/U" => Hybrid.new(:green, :blue),
+    "G/W" => Hybrid.new(:green, :white),
+    "R/G" => Hybrid.new(:red, :green),
+    "R/W" => Hybrid.new(:red, :white),
+    "U/B" => Hybrid.new(:blue, :black),
+    "U/R" => Hybrid.new(:blue, :red),
+    "W/B" => Hybrid.new(:white, :black),
+    "W/U" => Hybrid.new(:white, :blue)
   } 
   LOOKUP.default_proc = proc {|hash, key|
     # better than silent fail

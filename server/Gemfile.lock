@@ -19,6 +19,8 @@ GEM
     diff-lcs (1.1.3)
     i18n (0.6.1)
     kgio (2.7.4)
+    magic-cards (0.1.0)
+      nokogiri
     method_source (0.8.1)
     multi_json (1.3.7)
     nokogiri (1.5.5)
@@ -74,8 +76,8 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 3)
+  magic-cards
   multi_json
-  nokogiri
   picky (~> 4.0)
   picky-client (~> 4.0)
   procrastinate (~> 0.4)

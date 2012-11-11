@@ -30,8 +30,8 @@ end
 get '/search/full' do
   results = CardsSearch.search params[:query], :ids => params[:ids], :offset => params[:offset]
   results.extend Picky::Convenience
-  results.populate_with Card do |card|
-    card.to_s
+  results.populate_with MagicCards::Card do |card|
+    Presenter::Card.new(card).to_html
   end
 
   #
@@ -53,7 +53,7 @@ end
 
 helpers do
 
-  def js path
+  def js(path)
     "<script src='javascripts/#{path}.js' type='text/javascript'></script>"
   end
 

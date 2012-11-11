@@ -14,7 +14,7 @@ describe 'Integration Tests' do
 
   # Testing a count of results.
   #
-  it { cards.search('life demon').total.should == 6 }
+  it { cards.search('life demon').total.should == 19 }
 
   # Testing a specific order of result ids.
   #
@@ -22,8 +22,8 @@ describe 'Integration Tests' do
 
   # Testing an order of result categories.
   #
-  it { cards.search('life').should have_categories(['name'], ['rules']) }
-  it { cards.search('life demon').should have_categories(%w(name name) %w(name rules) %w(name subtype)  %w(rules name), %w(rules rules), %w(rules subtype)) }
+  it { cards.search('life').should have_categories(['rules'], ['name']) }
+  it { cards.search('life demon').should have_categories(%w(rules subtype), %w(rules name), %w(rules rules)) }
   it { cards.search('life demon')[:allocations][0][4].include? "Demon of Death's Gate" }
 
 end

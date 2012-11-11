@@ -3,6 +3,7 @@
 require 'sinatra/base'
 require 'picky'
 require 'nokogiri'
+require 'magic_cards'
 require File.expand_path '../logging', __FILE__
 
 class CardSearch < Sinatra::Application
@@ -15,22 +16,11 @@ class CardSearch < Sinatra::Application
   # Data source.
   #
   class Cards
-    class Card < Struct.new(*%w(id name supertype type subtype rules editions multi).map(&:to_sym))
-    end
-
     def initialize
-      @cards = []
-      file_name = File.expand_path "data/#{PICKY_ENVIRONMENT}/cards.xml", File.dirname(__FILE__)
-      ::Nokogiri::XML(File.read(file_name)).xpath('//card').each do |xml|
-        name = xml.xpath('.//name').text
-        @cards.push(Card.new.tap do |card|
-          card.id = name.dup
-          card.name = name
-          card.type = xml.xpath('.//type[@type="card"]').map(&:text)
-          card.subtype = xml.xpath('.//type[@type="sub"]').map(&:text)
-          card.supertype = xml.xpath('.//type[@type="super"]').map(&:text)
-          card.rules = xml.xpath('.//rule').map {|e| e.text.gsub(name, "") }
-        end)
+      @cards = MagicCards::populate
+      @cards.each do |card|
+        # delete the card's name from the rules index
+        card.rules.each {|e| e.gsub!(card.name, "") }        
       end
     end
 

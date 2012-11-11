@@ -1,0 +1,10 @@
+%li.card
+  %h3= name
+  %em
+    = supertype.join(" ")
+    = type.join(" ")
+    - unless subtype.empty?
+      = "-"
+      = subtype.join(" ")
+  %p
+    = rules.join("\n")

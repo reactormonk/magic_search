@@ -11,7 +11,7 @@ class ManaSymbols::Dual < ManaSymbols::Basic
   end
 end
 
-class ManaSymbols::Multi < ManaSymbols::Basic
+class ManaSymbols::Hybrid < ManaSymbols::Basic
   # Either one of the two colors
   def initialize(*color)
     @color = color
