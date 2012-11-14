@@ -33,6 +33,13 @@ describe MagicCards::Card do
     CARDS["Kiki-Jiki, Mirror Breaker"].supertype.must_equal %w(Legendary)
   end
 
+  it "should find power/toughness" do
+    CARDS["Kiki-Jiki, Mirror Breaker"].power.must_equal 2
+    CARDS["Kiki-Jiki, Mirror Breaker"].toughness.must_equal 2
+    CARDS["Blitz Hellion"].power.must_equal 7
+    CARDS["Blitz Hellion"].toughness.must_equal 7
+  end
+
   describe "should extract rules" do
     it "without explanations of keywords" do
       CARDS["Argothian Swine"].rules.to_a.must_equal [
