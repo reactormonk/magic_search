@@ -23,21 +23,33 @@ module MagicCards
     end
   end
 
-  class Card < Struct.new(*%w(id name supertype type subtype rules editions multi).map(&:to_sym))
+  class Card
+    def self.parse(xml)
+      card = new(xml)
+      if sub_xml = xml.xpath('./multi').first
+        card.other_card = sub_card = new(sub_xml)
+        sub_card.other_card = card
+        sub_card.multi = card.multi = sub_xml['type']
+      end
+      [card, sub_card].compact
+    end
+
+    attr_reader *%w(id name supertype type subtype rules editions).map(&:to_sym)
+    attr_accessor :other_card, :multi
+    def initialize(xml_node)
+      @name = xml_node.xpath('./name').text
+      @id = @name.dup # picky is evil here, so we need a duped name
+      @type = xml_node.xpath('./typelist/type[@type="card"]').map(&:text)
+      @subtype = xml_node.xpath('./typelist/type[@type="sub"]').map(&:text)
+      @supertype = xml_node.xpath('./typelist/type[@type="super"]').map(&:text)
+      @rules = Rules.new(xml_node.xpath('./rulelist'))
+    end
   end
 
-  def self.populate(klass = Card)
+  def self.populate
     file_name = File.expand_path "../data/cards.xml", File.dirname(__FILE__)
-    ::Nokogiri::XML(File.read(file_name)).xpath('//card').map do |xml|
-      name = xml.xpath('.//name').text
-      klass.new.tap do |card|
-        card.id = name.dup # picky is evil here, so we need a duped name
-        card.name = name
-        card.type = xml.xpath('.//type[@type="card"]').map(&:text)
-        card.subtype = xml.xpath('.//type[@type="sub"]').map(&:text)
-        card.supertype = xml.xpath('.//type[@type="super"]').map(&:text)
-        card.rules = Rules.new(xml.xpath('.//rulelist'))
-      end
+    ::Nokogiri::XML(File.read(file_name)).xpath('//card').flat_map do |xml|
+      Card.parse(xml)
     end
   end
 end
