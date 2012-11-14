@@ -7,8 +7,9 @@ gem 'i18n'
 gem 'activesupport', :require => 'active_support/core_ext'
 gem 'sinatra'
 gem 'haml'
-gem 'magic-cards'
+gem 'magic-cards', '0.1.1'
 
 group :development do
   gem 'sinatra-reloader'
+  gem 'pry'
 end

@@ -40,6 +40,11 @@ describe MagicCards::Card do
     CARDS["Blitz Hellion"].toughness.must_equal 7
   end
 
+  it "should set power/toughness to nil if not found" do
+    CARDS["Darksteel Axe"].power.must_equal nil
+    CARDS["Darksteel Axe"].toughness.must_equal nil
+  end
+
   describe "should extract rules" do
     it "without explanations of keywords" do
       CARDS["Argothian Swine"].rules.to_a.must_equal [

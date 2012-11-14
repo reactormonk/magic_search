@@ -6,5 +6,8 @@
     - unless subtype.empty?
       = "-"
       = subtype.join(" ")
-  %p
-    = rules.join("\n")
+    - if power and toughness
+      = [power, toughness].join("/")
+  - rules.each do |rule|
+    %p
+      = rule.join(", ")

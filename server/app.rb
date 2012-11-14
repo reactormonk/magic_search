@@ -45,6 +45,8 @@ class CardSearch < Sinatra::Application
     category :supertype, partial: Partial::Substring.new(from: 1)
     category :type, partial: Partial::Substring.new(from: 1)
     category :subtype, partial: Partial::Substring.new(from: 1)
+    category :power, partial: Partial::None.new
+    category :toughness, partial: Partial::None.new
     category :editions
     category :multi
   end

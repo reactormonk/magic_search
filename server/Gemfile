@@ -7,7 +7,7 @@ gem 'rack'
 gem 'rack_fast_escape', '2009.06.24' # Optional.
 gem 'text'
 gem 'multi_json'
-gem 'magic-cards'
+gem 'magic-cards', '0.1.1'
 
 # Optional.
 #

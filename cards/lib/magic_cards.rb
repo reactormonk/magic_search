@@ -6,6 +6,10 @@ module MagicCards
       @xml = xml
     end
 
+    def each(&block)
+      enum_for(:to_s, &block)
+    end
+
     def rules
       @xml.xpath('./rule')
     end

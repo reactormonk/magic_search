@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'tilt'
 require 'haml'
 require 'magic_cards'
+require 'pry'
 
 module MagicCards
   cards = populate
@@ -24,24 +25,14 @@ module Presenter
       @data = data
     end
 
-    def type
-      @data.type
-    end
-
-    def subtype
-      @data.subtype
-    end
-
-    def supertype
-      @data.supertype
-    end
-
-    def name
-      @data.name
+    %w(type subtype supertype name power toughness).each do |name|
+      define_method(name) do
+        @data.send(name)
+      end
     end
 
     def rules
-      @data.rules
+      @data.rules.by_no
     end
 
     def to_html
