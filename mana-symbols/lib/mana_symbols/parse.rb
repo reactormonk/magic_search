@@ -53,4 +53,12 @@ module ManaSymbols
       ManaSymbols::LOOKUP[element]
     end
   end
+
+  SHORTCUT = {
+    blue: 'U',
+    black: 'B',
+    white: 'W',
+    green: 'G',
+    red: 'R',
+  }
 end

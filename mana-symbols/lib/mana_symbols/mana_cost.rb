@@ -9,9 +9,14 @@ class ManaSymbols::ManaCost
     @symbols = symbols
   end
 
-  def cost
-    @symbols.map(&:cost).reduce(:+)
+  def to_s
+    symbols.join("")
   end
+
+  def cost
+    symbols.map(&:cost).reduce(:+)
+  end
+  alias :converted :cost 
 
   def white?
     colors.include? :white
@@ -34,7 +39,7 @@ class ManaSymbols::ManaCost
   end
 
   def colors
-    Set.new(@symbols.map(&:color).flatten)
+    Set.new(Array(symbols).map(&:color).flatten)
   end
 
   # this one is for hybrid/phyrexian/dual

@@ -3,6 +3,10 @@ require 'minitest/autorun'
 require_relative 'spec_helper'
 
 describe ManaSymbols do
+  def normalize(html)
+    Nokogiri::HTML(html).to_s
+  end
+
   it "should parse the basic colors" do
     %w(W R U B G).each do |color|
       ManaSymbols::parse("{#{color}}").to_a.must_equal [ManaSymbols::LOOKUP[color]]
@@ -43,5 +47,20 @@ describe ManaSymbols do
     }.each do |(string, result)|
       ManaSymbols::parse(string).cost.must_equal result
     end
+  end
+
+  it "should return them as a string" do
+    ManaSymbols::parse("{2}{R}{W}").to_s.must_equal "2RW"
+    ManaSymbols::parse("{X}{W}{R}").to_s.must_equal "XWR"
+    ManaSymbols::parse("{2/W}{W}{R}").to_s.must_equal "{2/W}WR"
+    ManaSymbols::parse("{W/P}{U}{B}").to_s.must_equal "{W/P}UB"
+    ManaSymbols::parse("{R/W}{W}{R}").to_s.must_equal "{R/W}WR"
+  end
+
+  it "should return them as img tags" do
+    ManaSymbols.image_location = "/foo/bar"
+    normalize(ManaSymbols::parse("{R}")).to_html.must_equal normalize("<img class='mana-symbol' src='/foo/bar/R.svg' alt='{R}'/>")
+    normalize(ManaSymbols::parse("{R}{W}")).to_html.must_equal normalize("<img class='mana-symbol' src='/foo/bar/R.svg' alt='{R}'/><img class='mana-symbol' src='/foo/bar/W.svg' alt='{W}'/>")
+    normalize(ManaSymbols::parse("{2}{W}")).to_html.must_equal normalize("<img class='mana-symbol' src='/foo/bar/2.svg' alt='{2}'/><img class='mana-symbol' src='/foo/bar/W.svg' alt='{W}'/>")
   end
 end
