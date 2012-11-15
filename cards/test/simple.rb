@@ -66,5 +66,12 @@ describe MagicCards::Card do
       CARDS["Assault Zeppelid"].rules.to_s.must_equal "Flying, Trample"
     end
 
+    it "should parse manacosts" do
+      CARDS["Kiki-Jiki, Mirror Breaker"].cost.to_s.must_equal "2RRR"
+      CARDS["Selesnya Guildmage"].cost.to_s.must_equal "{G/W}{G/W}"
+      CARDS["Kiki-Jiki, Mirror Breaker"].cost.converted.must_equal 5
+      CARDS["Selesnya Guildmage"].cost.converted.must_equal 2
+    end
+
   end
 end

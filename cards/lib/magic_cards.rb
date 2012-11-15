@@ -1,4 +1,5 @@
 require 'nokogiri'
+require 'mana_symbols'
 
 module MagicCards
   class Rules
@@ -38,7 +39,7 @@ module MagicCards
       [card, sub_card].compact
     end
 
-    attr_reader *%w(id name supertype type subtype rules editions power toughness).map(&:to_sym)
+    attr_reader *%w(id name supertype type subtype rules editions power toughness cost).map(&:to_sym)
     attr_accessor :other_card, :multi
     def initialize(xml_node)
       @name = xml_node.xpath('./name').text
@@ -46,9 +47,11 @@ module MagicCards
       @type = xml_node.xpath('./typelist/type[@type="card"]').map(&:text)
       @subtype = xml_node.xpath('./typelist/type[@type="sub"]').map(&:text)
       @supertype = xml_node.xpath('./typelist/type[@type="super"]').map(&:text)
-      @power = xml_node.xpath('./pow').text.to_i
-      @toughness = xml_node.xpath('./tgh').text.to_i
+      @power = Integer(xml_node.xpath('./pow').text) rescue nil
+      @toughness = Integer(xml_node.xpath('./tgh').text) rescue nil
       @rules = Rules.new(xml_node.xpath('./rulelist'))
+      cost = xml_node.xpath('./cost').text
+      @cost = ManaSymbols::parse(cost) unless cost.empty?
     end
   end
 

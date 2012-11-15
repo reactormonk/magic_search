@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
 
   # If you have other dependencies, add them here
   s.add_dependency "nokogiri"
+  s.add_dependency "mana-symbols"
 
   # If you need to check in files that aren't .rb files, add them here
   s.files        = Dir["{lib}/**/*.rb", "bin/*", "LICENSE", "*.md", "data/*"]
