@@ -17,9 +17,4 @@ describe ManaSymbols do
     target = ManaSymbols::parse("{T}")
     target.tap?.must_equal true
   end
-  it "should return them as img tags" do
-    ManaSymbols.image_location = "/foo/bar"
-    normalize(ManaSymbols::parse("{R/P}")).to_html.must_equal normalize("<img class='mana-symbol' src='/foo/bar/R-P.svg' alt='{R/P}'/>")
-    normalize(ManaSymbols::parse("{R/W}{U/B}")).to_html.must_equal normalize("<img class='mana-symbol' src='/foo/bar/R-W.svg' alt='{R/W}'/><img class='mana-symbol' src='/foo/bar/U-B.svg' alt='{U/B}'/>")
-  end
 end

@@ -5,8 +5,13 @@ class ManaSymbols::Basic
     @color = color
   end
 
-  def to_s
+  def mana_name
     SHORTCUT[color]
+  end
+
+  def to_s
+    name = mana_name
+    name.length > 1 ? "{#{name}}" : name
   end
 
   def cost
@@ -16,7 +21,7 @@ class ManaSymbols::Basic
   class Gray < self
     attr_reader :cost
 
-    def to_s
+    def mana_name
       @cost.to_s
     end
 
@@ -31,6 +36,10 @@ class ManaSymbols::Basic
 
   X = Gray.new(3).tap do |variable|
     def variable.to_s
+      "X"
+    end
+
+    def variable.mana_name
       "X"
     end
     # add more logic to colorless mana here

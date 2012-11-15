@@ -1,15 +1,15 @@
 require 'mana_symbols/basic'
 
 class ManaSymbols::Phyrexian < ManaSymbols::Basic
-  def to_s
-    "{#{SHORTCUT[@color]}/P}"
+  def mana_name
+    "#{SHORTCUT[@color]}/P"
   end
   # Either 2 life or the color
 end
 
 class ManaSymbols::Dual < ManaSymbols::Basic
-  def to_s
-    "{2/#{SHORTCUT[@color.first]}}"
+  def mana_name
+    "2/#{SHORTCUT[@color.first]}"
   end
   # Either 2 or the color
   def initialize(color)
@@ -19,8 +19,8 @@ end
 
 class ManaSymbols::Hybrid < ManaSymbols::Basic
   # Either one of the two colors
-  def to_s
-    "{" + @color.map {|c| SHORTCUT[c]}.join("/") + "}"
+  def mana_name
+    @color.map {|c| SHORTCUT[c]}.join("/")
   end
 
   def initialize(*color)
@@ -31,6 +31,10 @@ end
 ManaSymbols::Tap = Class.new do
   def cost
     0
+  end
+
+  def mana_name
+    "T"
   end
 
   def color

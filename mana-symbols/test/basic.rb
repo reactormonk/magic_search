@@ -56,11 +56,4 @@ describe ManaSymbols do
     ManaSymbols::parse("{W/P}{U}{B}").to_s.must_equal "{W/P}UB"
     ManaSymbols::parse("{R/W}{W}{R}").to_s.must_equal "{R/W}WR"
   end
-
-  it "should return them as img tags" do
-    ManaSymbols.image_location = "/foo/bar"
-    normalize(ManaSymbols::parse("{R}")).to_html.must_equal normalize("<img class='mana-symbol' src='/foo/bar/R.svg' alt='{R}'/>")
-    normalize(ManaSymbols::parse("{R}{W}")).to_html.must_equal normalize("<img class='mana-symbol' src='/foo/bar/R.svg' alt='{R}'/><img class='mana-symbol' src='/foo/bar/W.svg' alt='{W}'/>")
-    normalize(ManaSymbols::parse("{2}{W}")).to_html.must_equal normalize("<img class='mana-symbol' src='/foo/bar/2.svg' alt='{2}'/><img class='mana-symbol' src='/foo/bar/W.svg' alt='{W}'/>")
-  end
 end
