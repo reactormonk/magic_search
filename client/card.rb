@@ -5,7 +5,9 @@ require 'magic_cards'
 require 'pry'
 
 module MagicCards
+  print "Loading cards... "
   cards = populate
+  puts "Done."
   CARD_MAPPING = Hash[cards.map(&:name).zip(cards)]
   class Card
 
@@ -31,6 +33,14 @@ module Presenter
       end
     end
 
+    def manacost?
+      !! @data.cost
+    end
+
+    def manacost
+      @data.cost.to_html
+    end
+
     def rules
       @data.rules.by_no
     end
@@ -40,3 +50,5 @@ module Presenter
     end
   end
 end
+
+ManaSymbols::image_location = "/images"

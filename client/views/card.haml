@@ -1,5 +1,8 @@
 %li.card
-  %h3= name
+  %h3
+    = name
+    - if manacost?
+      .manacost= manacost
   %em
     = supertype.join(" ")
     = type.join(" ")

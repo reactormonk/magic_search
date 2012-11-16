@@ -68,7 +68,7 @@
             // If a category is missing, it is appended in a virtual group at the end.
             // Optional. Default is [].
             //
-            groups: [['name', 'supertype', 'type', 'subtype', 'edition', 'rules', 'editions']],
+            groups: [['name', 'supertype', 'type', 'subtype', 'edition', 'rules', 'editions', 'power', 'toughness']],
             // This is used for formatting inside the choice groups.
             //
             // Use %n$s, where n is the position of the category in the key.
@@ -76,12 +76,14 @@
             //
             choices: {
               en:{
-                'name': 'name %1$s',
+                'name': 'with name containing %1$s',
                 'edition': 'from edition %1$s',
                 'type': 'of type %1$s',
                 'subtype': 'of subtype %1$s',
                 'supertype': 'of supertype %1$s',
                 'rules': 'with ruletext containing %1$s',
+                'power': 'a creature with power %1$s',
+                'toughness': 'a creature with toughness %1$s',
               }
             },
 
