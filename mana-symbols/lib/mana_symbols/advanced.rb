@@ -28,7 +28,10 @@ class ManaSymbols::Hybrid < ManaSymbols::Basic
   end
 end
 
-ManaSymbols::Tap = Class.new do
+ManaSymbols::Tap = Class.new(ManaSymbols::Basic) do
+  def initialize
+  end
+
   def cost
     0
   end

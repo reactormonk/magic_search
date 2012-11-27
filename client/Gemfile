@@ -8,7 +8,7 @@ gem 'activesupport', :require => 'active_support/core_ext'
 gem 'sinatra'
 gem 'haml'
 gem 'magic-cards', '0.1.1'
-gem 'mana-symbols'
+gem 'mana-symbols', '0.1.1'
 
 group :development do
   gem 'sinatra-reloader'

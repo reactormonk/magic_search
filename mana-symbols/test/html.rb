@@ -17,4 +17,8 @@ describe ManaSymbols do
     normalize(ManaSymbols::parse("{R/P}").to_html).must_equal normalize("<img class='mana-symbol' src='/foo/bar/R-P.svg' alt='R/P'/>")
     normalize(ManaSymbols::parse("{R/W}{U/B}").to_html).must_equal normalize("<img class='mana-symbol' src='/foo/bar/R-W.svg' alt='R/W'/><img class='mana-symbol' src='/foo/bar/U-B.svg' alt='U/B'/>")
   end
+
+  it "should also work for strings" do
+    normalize(ManaSymbols::parse_string("{B}, Remove a -1/-1 counter from Carnifex Demon: Put a -1/-1 counter on each other creature.").to_html).must_equal normalize("<img class='mana-symbol' src='/foo/bar/B.svg' alt='B'/>, Remove a -1/-1 counter from Carnifex Demon: Put a -1/-1 counter on each other creature.")
+  end
 end

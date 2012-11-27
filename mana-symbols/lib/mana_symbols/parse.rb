@@ -66,6 +66,10 @@ module ManaSymbols
         .flatten.compact.reject(&:empty?)
     end
 
+    def to_s
+      @array.map(&:to_s)
+    end
+
     def to_a
       @array
     end
