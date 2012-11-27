@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "mana-symbols"
-  s.version     = "0.1.0"
+  s.version     = "0.1.1"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Simon Hafner"]
   s.email       = ["hafnersimon@gmail.com"]

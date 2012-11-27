@@ -3,6 +3,10 @@ module ManaSymbols
     Parser.new(string).cost
   end
 
+  def self.parse_string(string)
+    StringParser.new(string)
+  end
+
   # screw reflection
   LOOKUP = {
     'W' => Basic::W,
@@ -18,13 +22,13 @@ module ManaSymbols
     "2/R" => Dual.new(:red),
     "2/U" => Dual.new(:blue),
     "2/W" => Dual.new(:white),
-        
+
     "B/P" => Phyrexian.new(:black),
     "G/P" => Phyrexian.new(:green),
     "R/P" => Phyrexian.new(:red),
     "U/P" => Phyrexian.new(:blue),
     "W/P" => Phyrexian.new(:white),
-        
+
     # More combinations exist, but the order is defined.
     "B/G" => Hybrid.new(:black, :green),
     "B/R" => Hybrid.new(:black, :red),
@@ -36,7 +40,7 @@ module ManaSymbols
     "U/R" => Hybrid.new(:blue, :red),
     "W/B" => Hybrid.new(:white, :black),
     "W/U" => Hybrid.new(:white, :blue)
-  } 
+  }
   LOOKUP.default_proc = proc {|hash, key|
     # better than silent fail
     hash[key] = Basic::Gray.new(Integer(key))
@@ -51,6 +55,19 @@ module ManaSymbols
 
     def lookup(element)
       ManaSymbols::LOOKUP[element]
+    end
+  end
+
+  class StringParser
+    MANA_REGEXP = /(\{[^ ]+\})/
+    def initialize(string)
+      @array = string.split(MANA_REGEXP).each_slice(2)
+        .map {|(str, mana)| [str, mana ? ManaSymbols.parse(mana) : nil]}
+        .flatten.compact.reject(&:empty?)
+    end
+
+    def to_a
+      @array
     end
   end
 

@@ -56,4 +56,8 @@ describe ManaSymbols do
     ManaSymbols::parse("{W/P}{U}{B}").to_s.must_equal "{W/P}UB"
     ManaSymbols::parse("{R/W}{W}{R}").to_s.must_equal "{R/W}WR"
   end
+
+  it "should parse a string with symbols in it" do
+    ManaSymbols::parse_string("{T}: Add {W} or {U} to your mana pool. Adarkar Wastes deals 1 damage to you.").to_a.map {|e| Array(e)}.flatten.must_equal [ManaSymbols::LOOKUP["T"], ": Add ", ManaSymbols::Basic::W, " or ", ManaSymbols::Basic::U, " to your mana pool. Adarkar Wastes deals 1 damage to you."]
+  end
 end

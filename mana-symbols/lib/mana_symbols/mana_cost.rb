@@ -16,23 +16,27 @@ class ManaSymbols::ManaCost
   def cost
     symbols.map(&:cost).reduce(:+)
   end
-  alias :converted :cost 
+  alias :converted :cost
+
+  def empty?
+     symbols.empty?
+  end
 
   def white?
     colors.include? :white
-  end                    
+  end
   def blue?
     colors.include? :blue
-  end                    
+  end
   def black?
     colors.include? :black
-  end                    
+  end
   def red?
     colors.include? :red
-  end                    
+  end
   def green?
     colors.include? :green
-  end                    
+  end
 
   def tap?
     colors.include? :tap
