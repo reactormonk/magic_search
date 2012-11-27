@@ -42,7 +42,6 @@ module Presenter
 
     def rules
       @data.rules.by_no.map do |rules|
-        binding.pry if rules.to_s =~ /Carnifex/
         rules.map {|rule| ::ManaSymbols.parse_string(rule).to_html }.flatten
       end
     end

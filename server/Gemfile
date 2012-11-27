@@ -8,6 +8,7 @@ gem 'rack_fast_escape', '2009.06.24' # Optional.
 gem 'text'
 gem 'multi_json'
 gem 'magic-cards', '0.1.1'
+gem 'mana-symbols', '0.1.1' # Bundler bug
 
 # Optional.
 #
