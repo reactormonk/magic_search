@@ -2,7 +2,6 @@ require 'nokogiri'
 require 'tilt'
 require 'haml'
 require 'magic_cards'
-require 'pry'
 
 module MagicCards
   print "Loading cards... "
