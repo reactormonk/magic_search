@@ -30,5 +30,6 @@ describe 'Integration Tests' do
   it { cards.search_for('life demon').should include "Soulcage Fiend" }
 
   it { cards.search_for('subtype:jace').size.should > 1 }
+  it { cards.search_for('blue plainswalker').size.should include "Jace Beleren" }
   it { cards.search('memory').should have_categories(['name']) }
 end
