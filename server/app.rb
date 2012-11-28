@@ -29,10 +29,6 @@ class CardSearch < Sinatra::Application
       def rules_without_selfreference
         rules.to_s.gsub!(name, "")
       end
-
-      def id
-        name.dup.gsub(',', '')
-      end
     end
   end
 

@@ -52,6 +52,10 @@ module MagicCards
       cost = xml_node.xpath('./cost').text
       @cost = ManaSymbols::parse(cost) unless cost.empty?
     end
+
+    def id
+      name.dup.gsub(',', '')
+    end
   end
 
   def self.populate

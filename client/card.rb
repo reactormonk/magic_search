@@ -7,7 +7,8 @@ module MagicCards
   print "Loading cards... "
   cards = populate
   puts "Done."
-  CARD_MAPPING = Hash[cards.map {|card| card.name.gsub(',', '') }.zip(cards)]
+  CARD_MAPPING = Hash[cards.map {|card| card.id }.zip(cards)]
+
   class Card
 
     # Find uses a lookup table.
