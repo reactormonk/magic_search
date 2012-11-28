@@ -53,6 +53,10 @@ module MagicCards
       @cost = ManaSymbols::parse(cost) unless cost.empty?
     end
 
+    def colors
+      @cost ? @cost.colors : Set.new
+    end
+
     def id
       name.dup.gsub(',', '')
     end

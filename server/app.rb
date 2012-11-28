@@ -29,6 +29,10 @@ class CardSearch < Sinatra::Application
       def rules_without_selfreference
         rules.to_s.gsub!(name, "")
       end
+
+      def colors_string
+        colors.to_a.join(' ')
+      end
     end
   end
 
@@ -42,12 +46,13 @@ class CardSearch < Sinatra::Application
     category :name,
              similarity: Similarity::DoubleMetaphone.new(3),
              partial: Partial::Substring.new(from: 1) # Default is from: -3.
-    category :rules, :from => :rules_without_selfreference
+    category :rules, from: :rules_without_selfreference
     category :supertype, partial: Partial::Substring.new(from: 1)
     category :type, partial: Partial::Substring.new(from: 1)
     category :subtype, partial: Partial::Substring.new(from: 1)
     category :power, partial: Partial::None.new
     category :toughness, partial: Partial::None.new
+    category :colors, from: :colors_string, partial: Partial::Substring.new(from: 1)
     category :editions
     category :multi
   end
