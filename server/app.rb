@@ -16,18 +16,24 @@ class CardSearch < Sinatra::Application
   # Data source.
   #
   class Cards
+    include Enumerable
     def initialize
       @cards = MagicCards::populate
-      @cards.each do |card|
-        # delete the card's name from the rules index
-        card.rules.each {|e| e.gsub!(card.name, "") }        
-      end
     end
 
     def each(&block)
       @cards.each(&block)
     end
 
+    class ::MagicCards::Card
+      def rules_without_selfreference
+        rules.to_s.gsub!(name, "")
+      end
+
+      def id
+        name.dup.gsub(',', '')
+      end
+    end
   end
 
   # Define an index.
@@ -35,13 +41,12 @@ class CardSearch < Sinatra::Application
   cards_index = Index.new :cards do
     source   { Cards.new }
     key_format :to_s
-    indexing removes_characters: /[^a-z0-9\s\/\-\_\:\"\&\.]/i,
-             stopwords:          /\b(and|the|of|it|in|for)\b/i,
+    indexing removes_characters: /[^a-z0-9\s\/\-\_\:\"\&\.\,]/i,
              splits_text_on:     /[\s\/\-\_\:\"\&\.]/
     category :name,
              similarity: Similarity::DoubleMetaphone.new(3),
              partial: Partial::Substring.new(from: 1) # Default is from: -3.
-    category :rules
+    category :rules, :from => :rules_without_selfreference
     category :supertype, partial: Partial::Substring.new(from: 1)
     category :type, partial: Partial::Substring.new(from: 1)
     category :subtype, partial: Partial::Substring.new(from: 1)

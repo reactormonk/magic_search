@@ -39,11 +39,10 @@ module MagicCards
       [card, sub_card].compact
     end
 
-    attr_reader *%w(id name supertype type subtype rules editions power toughness cost).map(&:to_sym)
+    attr_reader *%w(name supertype type subtype rules editions power toughness cost).map(&:to_sym)
     attr_accessor :other_card, :multi
     def initialize(xml_node)
       @name = xml_node.xpath('./name').text
-      @id = @name.dup # picky is evil here, so we need a duped name
       @type = xml_node.xpath('./typelist/type[@type="card"]').map(&:text)
       @subtype = xml_node.xpath('./typelist/type[@type="sub"]').map(&:text)
       @supertype = xml_node.xpath('./typelist/type[@type="super"]').map(&:text)
