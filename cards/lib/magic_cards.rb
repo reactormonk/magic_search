@@ -58,7 +58,7 @@ module MagicCards
     end
 
     def id
-      name.dup.gsub(',', '')
+      name.gsub(/[^[[:word:]][[:space:]]]/, '')
     end
   end
 
