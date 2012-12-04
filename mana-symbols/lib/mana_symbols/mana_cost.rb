@@ -38,6 +38,13 @@ class ManaSymbols::ManaCost
     colors.include? :green
   end
 
+  def snow?
+    colors.include? :snow
+  end
+  def chaos?
+    colors.include? :chaos
+  end
+
   def tap?
     colors.include? :tap
   end

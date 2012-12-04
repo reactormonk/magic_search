@@ -44,6 +44,7 @@ class ManaSymbols::Basic
     end
     # add more logic to colorless mana here
   end
+  
   W = new(:white)
   U = new(:blue)
   B = new(:black)
@@ -51,10 +52,10 @@ class ManaSymbols::Basic
   G = new(:green)
 
   SHORTCUT = {
-    blue: 'U',
-    black: 'B',
-    white: 'W',
-    green: 'G',
-    red: 'R',
-  }
+              blue: 'U',
+              black: 'B',
+              white: 'W',
+              green: 'G',
+              red: 'R',
+             }
 end

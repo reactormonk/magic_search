@@ -17,4 +17,14 @@ describe ManaSymbols do
     target = ManaSymbols::parse("{T}")
     target.tap?.must_equal true
   end
+
+  it "should parse snow {S}" do
+    target = ManaSymbols::parse("{S}")
+    target.snow?.must_equal true
+  end
+
+  it "should parse snow {C}" do
+    target = ManaSymbols::parse("{C}")
+    target.chaos?.must_equal true
+  end
 end

@@ -1,3 +1,4 @@
+require 'mana_symbols/advanced'
 module ManaSymbols
   def self.parse(string)
     Parser.new(string).cost
@@ -16,6 +17,10 @@ module ManaSymbols
     'G' => Basic::G,
     'X' => Basic::X,
     'T' => Tap,
+
+    # Advanced symbols
+    'C' => C,
+    'S' => S,
 
     "2/B" => Dual.new(:black),
     "2/G" => Dual.new(:green),
